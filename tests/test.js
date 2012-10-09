@@ -22,8 +22,17 @@ describe('initialize', function () {
 });
 
 describe('page views', function () {
-  it('should register a page view', function (done){
+  it('should register a page view with callback', function (done){
     NA.trackPage('some title', 'some page', function (err, resp) {
+      resp.statusCode.should.eql(200);
+      done();
+    });
+  });
+
+  it('should register a page view with events emitted', function (done){
+    var evt = NA.trackPage('some title', 'some page');
+
+    evt.on('viewed', function(err, resp) {
       resp.statusCode.should.eql(200);
       done();
     });
@@ -41,7 +50,7 @@ describe('events', function() {
 
   it('should register an event with events emitted', function (done) {
     var evt = NA.trackEvent('test event', 'boom');
-    evt.on('sent', function(err, resp) {
+    evt.on('tracked', function(err, resp) {
       resp.statusCode.should.eql(200);
       done();
     });
