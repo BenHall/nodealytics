@@ -24,3 +24,9 @@ NA.initialize('UA-12345678-1', 'someplace.com', function () {
 ### What do those variables mean?!
 
 The answers, as per usual, can be learned from the Google: https://developers.google.com/analytics/resources/articles/gaTrackingTroubleshooting#gifParameters
+
+## Run tests
+
+```
+mocha tests/test.js
+```
