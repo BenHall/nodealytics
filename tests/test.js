@@ -19,6 +19,12 @@ describe('initialize', function () {
   it('should initialize with the appropriate parameters', function (done) {
     NA.initialize('UA-33709401-1', 'testsite.com', done);
   });
+
+  it('should initialize without optional callback', function (done){
+    var evt = NA.initialize('UA-33709401-1', 'testsite.com');
+    should.exist(evt);
+    done();
+  });
 });
 
 describe('page views', function () {
